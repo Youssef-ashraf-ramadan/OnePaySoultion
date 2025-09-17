@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { t, setLanguage, getLanguage, getCountries } from '../utils/i18n';
 import './Register.css';
 
 const Register = () => {
@@ -11,20 +13,7 @@ const Register = () => {
     vendorWebsite: ''
   });
 
-  const countries = [
-    { code: 'SA', name: 'السعودية', flag: '🇸🇦' },
-    { code: 'AE', name: 'الإمارات', flag: '🇦🇪' },
-    { code: 'KW', name: 'الكويت', flag: '🇰🇼' },
-    { code: 'QA', name: 'قطر', flag: '🇶🇦' },
-    { code: 'BH', name: 'البحرين', flag: '🇧🇭' },
-    { code: 'OM', name: 'عمان', flag: '🇴🇲' },
-    { code: 'JO', name: 'الأردن', flag: '🇯🇴' },
-    { code: 'LB', name: 'لبنان', flag: '🇱🇧' },
-    { code: 'EG', name: 'مصر', flag: '🇪🇬' },
-    { code: 'MA', name: 'المغرب', flag: '🇲🇦' },
-    { code: 'TN', name: 'تونس', flag: '🇹🇳' },
-    { code: 'DZ', name: 'الجزائر', flag: '🇩🇿' }
-  ];
+  const countries = getCountries();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -38,7 +27,13 @@ const Register = () => {
     e.preventDefault();
     console.log('Form Data:', formData);
     // هنا يمكن إضافة منطق إرسال البيانات
-    alert('تم إرسال البيانات بنجاح!');
+    alert(getLanguage() === 'ar' ? 'تم إرسال البيانات بنجاح!' : 'Data submitted successfully!');
+  };
+
+  const handleLanguageChange = (lang) => {
+    setLanguage(lang);
+    // Force re-render by updating state
+    setFormData({...formData});
   };
 
   return (
@@ -47,15 +42,15 @@ const Register = () => {
         {/* Left Side - Form Section */}
         <div className="form-section">
           <div className="form-header">
-            <h2>سجل معلوماتك معنا</h2>
-            <p>املأ البيانات التالية للبدء</p>
+            <h2>{t('register.title')}</h2>
+            <p>{t('register.subtitle')}</p>
           </div>
           
           <form onSubmit={handleSubmit} className="register-form">
             {/* Name and Email Row */}
             <div className="form-row">
               <div className="form-group">
-                <label htmlFor="name">الاسم الكامل</label>
+                <label htmlFor="name">{t('register.fullName')}</label>
                 <input
                   type="text"
                   id="name"
@@ -63,11 +58,11 @@ const Register = () => {
                   value={formData.name}
                   onChange={handleInputChange}
                   required
-                  placeholder="أدخل اسمك الكامل"
+                  placeholder={t('register.fullNamePlaceholder')}
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="email">البريد الإلكتروني</label>
+                <label htmlFor="email">{t('register.email')}</label>
                 <input
                   type="email"
                   id="email"
@@ -75,7 +70,7 @@ const Register = () => {
                   value={formData.email}
                   onChange={handleInputChange}
                   required
-                  placeholder="example@email.com"
+                  placeholder={t('register.emailPlaceholder')}
                 />
               </div>
             </div>
@@ -83,7 +78,7 @@ const Register = () => {
             {/* Password and Phone Row */}
             <div className="form-row">
               <div className="form-group">
-                <label htmlFor="password">كلمة المرور</label>
+                <label htmlFor="password">{t('register.password')}</label>
                 <input
                   type="password"
                   id="password"
@@ -91,12 +86,12 @@ const Register = () => {
                   value={formData.password}
                   onChange={handleInputChange}
                   required
-                  placeholder="أدخل كلمة المرور"
+                  placeholder={t('register.passwordPlaceholder')}
                   minLength="6"
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="phone">رقم الهاتف</label>
+                <label htmlFor="phone">{t('register.phone')}</label>
                 <input
                   type="tel"
                   id="phone"
@@ -104,7 +99,7 @@ const Register = () => {
                   value={formData.phone}
                   onChange={handleInputChange}
                   required
-                  placeholder="+966 50 123 4567"
+                  placeholder={t('register.phonePlaceholder')}
                 />
               </div>
             </div>
@@ -112,7 +107,7 @@ const Register = () => {
             {/* Country and Website Row */}
             <div className="form-row">
               <div className="form-group">
-                <label htmlFor="country">البلد</label>
+                <label htmlFor="country">{t('register.country')}</label>
                 <select
                   id="country"
                   name="country"
@@ -120,7 +115,7 @@ const Register = () => {
                   onChange={handleInputChange}
                   required
                 >
-                  <option value="">اختر البلد</option>
+                  <option value="">{t('register.countryPlaceholder')}</option>
                   {countries.map(country => (
                     <option key={country.code} value={country.code}>
                       {country.flag} {country.name}
@@ -129,22 +124,45 @@ const Register = () => {
                 </select>
               </div>
               <div className="form-group">
-                <label htmlFor="vendorWebsite">موقع البائع</label>
+                <label htmlFor="vendorWebsite">{t('register.vendorWebsite')}</label>
                 <input
                   type="url"
                   id="vendorWebsite"
                   name="vendorWebsite"
                   value={formData.vendorWebsite}
                   onChange={handleInputChange}
-                  placeholder="https://example.com"
+                  placeholder={t('register.vendorWebsitePlaceholder')}
                 />
               </div>
             </div>
 
             {/* Submit Button */}
             <button type="submit" className="submit-btn">
-              سجل معلوماتك
+              {t('register.submitButton')}
             </button>
+
+            {/* Login Link */}
+            <div className="login-link">
+              <p>{t('register.hasAccount')} <Link to="/login">{t('register.login')}</Link></p>
+            </div>
+
+            {/* Language Switcher */}
+            <div className="language-switcher">
+              <button 
+                type="button" 
+                className={`lang-btn ${getLanguage() === 'ar' ? 'active' : ''}`}
+                onClick={() => handleLanguageChange('ar')}
+              >
+                عربي
+              </button>
+              <button 
+                type="button" 
+                className={`lang-btn ${getLanguage() === 'en' ? 'active' : ''}`}
+                onClick={() => handleLanguageChange('en')}
+              >
+                English
+              </button>
+            </div>
           </form>
         </div>
 

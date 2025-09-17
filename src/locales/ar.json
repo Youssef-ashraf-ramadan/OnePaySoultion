@@ -1,0 +1,60 @@
+{
+  "login": {
+    "title": "تسجيل الدخول",
+    "subtitle": "مرحباً بك مرة أخرى",
+    "email": "البريد الإلكتروني",
+    "emailPlaceholder": "example@email.com",
+    "password": "كلمة المرور",
+    "passwordPlaceholder": "أدخل كلمة المرور",
+    "submitButton": "تسجيل الدخول",
+    "forgotPassword": "نسيت كلمة المرور؟",
+    "noAccount": "ليس لديك حساب؟",
+    "createAccount": "إنشاء حساب جديد"
+  },
+  "register": {
+    "title": "سجل معلوماتك معنا",
+    "subtitle": "املأ البيانات التالية للبدء",
+    "fullName": "الاسم الكامل",
+    "fullNamePlaceholder": "أدخل اسمك الكامل",
+    "email": "البريد الإلكتروني",
+    "emailPlaceholder": "example@email.com",
+    "password": "كلمة المرور",
+    "passwordPlaceholder": "أدخل كلمة المرور",
+    "phone": "رقم الهاتف",
+    "phonePlaceholder": "+966 50 123 4567",
+    "country": "الدولة",
+    "countryPlaceholder": "اختر الدولة",
+    "vendorWebsite": "موقع البائع",
+    "vendorWebsitePlaceholder": "https://example.com",
+    "submitButton": "سجل معلوماتك",
+    "hasAccount": "لديك حساب بالفعل؟",
+    "login": "تسجيل الدخول"
+  },
+  "forgotPassword": {
+    "title": "نسيت كلمة المرور؟",
+    "subtitle": "أدخل بريدك الإلكتروني وسنرسل لك رابط لإعادة تعيين كلمة المرور",
+    "email": "البريد الإلكتروني",
+    "emailPlaceholder": "example@email.com",
+    "submitButton": "إرسال رابط إعادة التعيين",
+    "backToLogin": "← العودة لتسجيل الدخول",
+    "successTitle": "تم إرسال الرابط",
+    "successMessage": "تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني",
+    "emailSent": "تم الإرسال إلى:",
+    "backToLoginBtn": "العودة لتسجيل الدخول",
+    "resendBtn": "إرسال مرة أخرى"
+  },
+  "countries": {
+    "SA": "السعودية",
+    "AE": "الإمارات",
+    "KW": "الكويت",
+    "QA": "قطر",
+    "BH": "البحرين",
+    "OM": "عمان",
+    "JO": "الأردن",
+    "LB": "لبنان",
+    "EG": "مصر",
+    "MA": "المغرب",
+    "TN": "تونس",
+    "DZ": "الجزائر"
+  }
+}

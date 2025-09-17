@@ -1,0 +1,60 @@
+{
+  "login": {
+    "title": "Login",
+    "subtitle": "Welcome back",
+    "email": "Email",
+    "emailPlaceholder": "example@email.com",
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "submitButton": "Login",
+    "forgotPassword": "Forgot password?",
+    "noAccount": "Don't have an account?",
+    "createAccount": "Create new account"
+  },
+  "register": {
+    "title": "Register with us",
+    "subtitle": "Fill in the following information to get started",
+    "fullName": "Full Name",
+    "fullNamePlaceholder": "Enter your full name",
+    "email": "Email",
+    "emailPlaceholder": "example@email.com",
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "phone": "Phone Number",
+    "phonePlaceholder": "+966 50 123 4567",
+    "country": "Country",
+    "countryPlaceholder": "Select Country",
+    "vendorWebsite": "Vendor Website",
+    "vendorWebsitePlaceholder": "https://example.com",
+    "submitButton": "Register",
+    "hasAccount": "Already have an account?",
+    "login": "Login"
+  },
+  "forgotPassword": {
+    "title": "Forgot Password?",
+    "subtitle": "Enter your email and we'll send you a link to reset your password",
+    "email": "Email",
+    "emailPlaceholder": "example@email.com",
+    "submitButton": "Send Reset Link",
+    "backToLogin": "← Back to Login",
+    "successTitle": "Link Sent",
+    "successMessage": "Password reset link has been sent to your email",
+    "emailSent": "Sent to:",
+    "backToLoginBtn": "Back to Login",
+    "resendBtn": "Send Again"
+  },
+  "countries": {
+    "SA": "Saudi Arabia",
+    "AE": "United Arab Emirates",
+    "KW": "Kuwait",
+    "QA": "Qatar",
+    "BH": "Bahrain",
+    "OM": "Oman",
+    "JO": "Jordan",
+    "LB": "Lebanon",
+    "EG": "Egypt",
+    "MA": "Morocco",
+    "TN": "Tunisia",
+    "DZ": "Algeria"
+  }
+}
