@@ -12,7 +12,21 @@
     "createAccount": "Create new account",
     "or": "Or",
     "welcomeTitle": "Welcome Back",
-    "welcomeDescription": "Sign in to your account and enjoy our premium services."
+    "welcomeDescription": "Sign in to your account and enjoy our premium services.",
+    "swiper": {
+      "slide1": {
+        "title": "Pay Online Securely",
+        "description": "Secure and easy online payment service to complete your transactions through the website."
+      },
+      "slide2": {
+        "title": "Fast & Reliable",
+        "description": "Experience lightning-fast transactions with our cutting-edge payment technology."
+      },
+      "slide3": {
+        "title": "Global Coverage",
+        "description": "Accept payments from customers worldwide with our international payment solutions."
+      }
+    }
   },
   "register": {
     "title": "Register with us",

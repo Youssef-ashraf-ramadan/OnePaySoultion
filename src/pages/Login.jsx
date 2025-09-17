@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { t, setLanguage, getLanguage } from '../utils/i18n';
 import './Login.css';
@@ -9,6 +9,39 @@ const Login = () => {
     password: ''
   });
   const [currentLanguage, setCurrentLanguage] = useState(getLanguage());
+
+  // Swiper data
+  const swiperData = [
+    {
+      id: 1,
+      title: t('login.swiper.slide1.title'),
+      description: t('login.swiper.slide1.description'),
+      currency: "€ $ £ ₹ ¥ ₽"
+    },
+    {
+      id: 2,
+      title: t('login.swiper.slide2.title'),
+      description: t('login.swiper.slide2.description'),
+      currency: "💳 🏦 📱 💰"
+    },
+    {
+      id: 3,
+      title: t('login.swiper.slide3.title'),
+      description: t('login.swiper.slide3.description'),
+      currency: "🌍 🌎 🌏 🗺️"
+    }
+  ];
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Auto-rotate swiper
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % swiperData.length);
+    }, 5000); // Change slide every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [swiperData.length]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -28,6 +61,10 @@ const Login = () => {
     setLanguage(lang);
     setCurrentLanguage(lang);
     setFormData({...formData});
+  };
+
+  const handleIndicatorClick = (index) => {
+    setCurrentSlide(index);
   };
 
   // تحديد ترتيب المحتوى حسب اللغة
@@ -107,7 +144,7 @@ const Login = () => {
 
   return (
     <div className="login-wrapper" dir={isArabic ? 'rtl' : 'ltr'}>
-      {/* المحتوى (الـ branding) - دائماً في الـ left-section */}
+      {/* المحتوى (الـ swiper) - دائماً في الـ left-section */}
       <div className="left-section">
         <div className="branding-content">
           <div className="logo">
@@ -115,11 +152,27 @@ const Login = () => {
             <p className="logo-subtitle">Online Pay Solution</p>
           </div>
           <div className="main-headline">
-            <h2>{t('login.welcomeTitle')}</h2>
+            <h2 key={currentSlide} className="slide-title">
+              {swiperData[currentSlide].title}
+            </h2>
           </div>
           <div className="description">
-            <p>{t('login.welcomeDescription')}</p>
+            <p key={currentSlide} className="slide-description">
+              {swiperData[currentSlide].description}
+            </p>
           </div>
+          <div className="indicators">
+            {swiperData.map((_, index) => (
+              <div
+                key={index}
+                className={`indicator ${index === currentSlide ? 'active' : ''}`}
+                onClick={() => handleIndicatorClick(index)}
+              ></div>
+            ))}
+          </div>
+        </div>
+        <div className="currency-background" key={currentSlide}>
+          {swiperData[currentSlide].currency}
         </div>
       </div>
       
