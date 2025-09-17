@@ -9,26 +9,46 @@
     "submitButton": "تسجيل الدخول",
     "forgotPassword": "نسيت كلمة المرور؟",
     "noAccount": "ليس لديك حساب؟",
-    "createAccount": "إنشاء حساب جديد"
+    "createAccount": "إنشاء حساب جديد",
+    "or": "أو",
+    "welcomeTitle": "مرحباً بك مرة أخرى",
+    "welcomeDescription": "سجل دخولك للوصول إلى حسابك والاستمتاع بخدماتنا المميزة."
   },
   "register": {
     "title": "سجل معلوماتك معنا",
     "subtitle": "املأ البيانات التالية للبدء",
-    "fullName": "الاسم الكامل",
-    "fullNamePlaceholder": "أدخل اسمك الكامل",
+    "getStarted": "دعنا نبدأ معك",
+    "createAccount": "إنشاء حساب جديد",
+    "fullName": "اسمك",
+    "fullNamePlaceholder": "أحمد محمد",
     "email": "البريد الإلكتروني",
-    "emailPlaceholder": "example@email.com",
+    "emailPlaceholder": "ahmed@example.com",
     "password": "كلمة المرور",
-    "passwordPlaceholder": "أدخل كلمة المرور",
+    "passwordPlaceholder": "كلمة المرور",
     "phone": "رقم الهاتف",
     "phonePlaceholder": "+966 50 123 4567",
     "country": "الدولة",
     "countryPlaceholder": "اختر الدولة",
     "vendorWebsite": "موقع البائع",
     "vendorWebsitePlaceholder": "https://example.com",
-    "submitButton": "سجل معلوماتك",
+    "submitButton": "ابدأ الآن",
+    "or": "أو",
     "hasAccount": "لديك حساب بالفعل؟",
-    "login": "تسجيل الدخول"
+    "login": "تسجيل الدخول",
+    "swiper": {
+      "slide1": {
+        "title": "ادفع بأمان عبر الإنترنت",
+        "description": "خدمة دفع آمنة وسهلة لإتمام معاملاتك عبر الموقع."
+      },
+      "slide2": {
+        "title": "سريع وموثوق",
+        "description": "استمتع بمعاملات سريعة البرق مع تقنية الدفع المتطورة لدينا."
+      },
+      "slide3": {
+        "title": "تغطية عالمية",
+        "description": "اقبل المدفوعات من العملاء في جميع أنحاء العالم مع حلول الدفع الدولية لدينا."
+      }
+    }
   },
   "forgotPassword": {
     "title": "نسيت كلمة المرور؟",
@@ -36,12 +56,16 @@
     "email": "البريد الإلكتروني",
     "emailPlaceholder": "example@email.com",
     "submitButton": "إرسال رابط إعادة التعيين",
-    "backToLogin": "← العودة لتسجيل الدخول",
+    "backToLogin": "العودة لتسجيل الدخول",
     "successTitle": "تم إرسال الرابط",
     "successMessage": "تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني",
     "emailSent": "تم الإرسال إلى:",
     "backToLoginBtn": "العودة لتسجيل الدخول",
-    "resendBtn": "إرسال مرة أخرى"
+    "resendBtn": "إرسال مرة أخرى",
+    "or": "أو",
+    "rememberPassword": "تذكرت كلمة المرور؟",
+    "welcomeTitle": "نسيت كلمة المرور؟",
+    "welcomeDescription": "لا تقلق، يمكننا مساعدتك في استعادة حسابك بسهولة وأمان."
   },
   "countries": {
     "SA": "السعودية",

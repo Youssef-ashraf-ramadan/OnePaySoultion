@@ -8,6 +8,7 @@ const Login = () => {
     email: '',
     password: ''
   });
+  const [currentLanguage, setCurrentLanguage] = useState(getLanguage());
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -20,98 +21,111 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Login Data:', formData);
-    // هنا يمكن إضافة منطق تسجيل الدخول
     alert(getLanguage() === 'ar' ? 'تم تسجيل الدخول بنجاح!' : 'Login successful!');
   };
 
   const handleLanguageChange = (lang) => {
     setLanguage(lang);
-    // Force re-render by updating state
+    setCurrentLanguage(lang);
     setFormData({...formData});
   };
 
+  // تحديد ترتيب المحتوى حسب اللغة
+  const isArabic = currentLanguage === 'ar';
+
+  const formContent = (
+    <div className="form-card">
+      <p style={{ fontSize: "1rem", color: "#666" }}>
+        {t('login.subtitle')}
+      </p>
+      <h2>{t('login.title')}</h2>
+
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label>{t('login.email')}</label>
+          <input 
+            type="email" 
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
+            placeholder={t('login.emailPlaceholder')} 
+          />
+        </div>
+
+        <div className="form-group">
+          <label>{t('login.password')}</label>
+          <input 
+            type="password" 
+            name="password"
+            value={formData.password}
+            onChange={handleInputChange}
+            placeholder={t('login.passwordPlaceholder')} 
+          />
+          <span className="password-toggle">👁</span>
+        </div>
+
+        <div className="form-options">
+          <Link to="/forgot-password" className="forgot-password">
+            {t('login.forgotPassword')}
+          </Link>
+        </div>
+
+        <button type="submit" className="submit-btn">
+          {t('login.submitButton')}
+        </button>
+      </form>
+
+      <div className="divider">{t('login.or')}</div>
+
+      <p className="login-text">
+        {t('login.noAccount')} 
+        <Link to="/register" className="login-link">{t('login.createAccount')}</Link>
+      </p>
+
+      <div className="language-switcher">
+        <label>
+          <input 
+            type="radio" 
+            name="lang" 
+            checked={currentLanguage === 'en'}
+            onChange={() => handleLanguageChange('en')}
+          /> 
+          English
+        </label>
+        <label>
+          <input 
+            type="radio" 
+            name="lang" 
+            checked={currentLanguage === 'ar'}
+            onChange={() => handleLanguageChange('ar')}
+          /> 
+          العربية
+        </label>
+      </div>
+    </div>
+  );
+
   return (
-    <div className="login-container">
-      <div className="login-card">
-        {/* Left Side - Form Section */}
-        <div className="form-section">
-          <div className="form-header">
-            <h2>{t('login.title')}</h2>
-            <p>{t('login.subtitle')}</p>
+    <div className="login-wrapper" dir={isArabic ? 'rtl' : 'ltr'}>
+      {/* المحتوى (الـ branding) - دائماً في الـ left-section */}
+      <div className="left-section">
+        <div className="branding-content">
+          <div className="logo">
+            <h1 className="logo-text">OPS</h1>
+            <p className="logo-subtitle">Online Pay Solution</p>
           </div>
-          
-          <form onSubmit={handleSubmit} className="login-form">
-            {/* Email Field */}
-            <div className="form-group">
-              <label htmlFor="email">{t('login.email')}</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                required
-                placeholder={t('login.emailPlaceholder')}
-              />
-            </div>
-
-            {/* Password Field */}
-            <div className="form-group">
-              <label htmlFor="password">{t('login.password')}</label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={formData.password}
-                onChange={handleInputChange}
-                required
-                placeholder={t('login.passwordPlaceholder')}
-              />
-            </div>
-
-            {/* Forgot Password */}
-            <div className="form-options">
-              <Link to="/forgot-password" className="forgot-password">
-                {t('login.forgotPassword')}
-              </Link>
-            </div>
-
-            {/* Submit Button */}
-            <button type="submit" className="submit-btn">
-              {t('login.submitButton')}
-            </button>
-
-            {/* Register Link */}
-            <div className="register-link">
-              <p>{t('login.noAccount')} <Link to="/register">{t('login.createAccount')}</Link></p>
-            </div>
-
-            {/* Language Switcher */}
-            <div className="language-switcher">
-              <button 
-                type="button" 
-                className={`lang-btn ${getLanguage() === 'ar' ? 'active' : ''}`}
-                onClick={() => handleLanguageChange('ar')}
-              >
-                عربي
-              </button>
-              <button 
-                type="button" 
-                className={`lang-btn ${getLanguage() === 'en' ? 'active' : ''}`}
-                onClick={() => handleLanguageChange('en')}
-              >
-                English
-              </button>
-            </div>
-          </form>
-        </div>
-
-        {/* Right Side - Logo Section */}
-        <div className="image-section">
-          <div className="logo-container">
-            <img src="/logo.jpeg" alt="OPS Logo" className="logo-image" />
+          <div className="main-headline">
+            <h2>{t('login.welcomeTitle')}</h2>
+          </div>
+          <div className="description">
+            <p>{t('login.welcomeDescription')}</p>
           </div>
         </div>
+      </div>
+      
+      {/* الفورم - دائماً في الـ right-section */}
+      <div className="right-section">
+        {formContent}
       </div>
     </div>
   );

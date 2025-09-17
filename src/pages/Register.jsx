@@ -1,19 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { t, setLanguage, getLanguage, getCountries } from '../utils/i18n';
+import { t, setLanguage, getLanguage } from '../utils/i18n';
 import './Register.css';
 
 const Register = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    password: '',
-    phone: '',
-    country: '',
-    vendorWebsite: ''
+    password: ''
   });
 
-  const countries = getCountries();
+  // Swiper data
+  const swiperData = [
+    {
+      id: 1,
+      title: t('register.swiper.slide1.title'),
+      description: t('register.swiper.slide1.description'),
+      currency: "€ $ £ ₹ ¥ ₽"
+    },
+    {
+      id: 2,
+      title: t('register.swiper.slide2.title'),
+      description: t('register.swiper.slide2.description'),
+      currency: "💳 🏦 📱 💰"
+    },
+    {
+      id: 3,
+      title: t('register.swiper.slide3.title'),
+      description: t('register.swiper.slide3.description'),
+      currency: "🌍 🌎 🌏 🗺️"
+    }
+  ];
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentLanguage, setCurrentLanguage] = useState(getLanguage());
+
+  // Auto-rotate swiper
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % swiperData.length);
+    }, 5000); // Change slide every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [swiperData.length]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -25,153 +54,140 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form Data:', formData);
-    // هنا يمكن إضافة منطق إرسال البيانات
     alert(getLanguage() === 'ar' ? 'تم إرسال البيانات بنجاح!' : 'Data submitted successfully!');
   };
 
   const handleLanguageChange = (lang) => {
     setLanguage(lang);
-    // Force re-render by updating state
-    setFormData({...formData});
+    setCurrentLanguage(lang);
+    setFormData({ ...formData });
   };
 
+  const handleIndicatorClick = (index) => {
+    setCurrentSlide(index);
+  };
+
+  // تحديد ترتيب المحتوى حسب اللغة
+  const isArabic = currentLanguage === 'ar';
+  
+  const brandingContent = (
+    <div className="branding-content">
+      <div className="logo">
+        <h1 className="logo-text">OPS</h1>
+        <p className="logo-subtitle">Online Pay Solution</p>
+      </div>
+      <div className="main-headline">
+        <h2 key={currentSlide} className="slide-title">
+          {swiperData[currentSlide].title}
+        </h2>
+      </div>
+      <div className="description">
+        <p key={currentSlide} className="slide-description">
+          {swiperData[currentSlide].description}
+        </p>
+      </div>
+      <div className="indicators">
+        {swiperData.map((_, index) => (
+          <div
+            key={index}
+            className={`indicator ${index === currentSlide ? 'active' : ''}`}
+            onClick={() => handleIndicatorClick(index)}
+          ></div>
+        ))}
+      </div>
+    </div>
+  );
+
+  const formContent = (
+    <div className="form-card">
+      <p style={{ fontSize: "1rem", color: "#666" }}>
+        {t('register.getStarted')}
+      </p>
+      <h2>{t('register.createAccount')}</h2>
+
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label>{t('register.fullName')}</label>
+          <input 
+            type="text" 
+            name="name"
+            value={formData.name}
+            onChange={handleInputChange}
+            placeholder={t('register.fullNamePlaceholder')} 
+          />
+        </div>
+
+        <div className="form-group">
+          <label>{t('register.email')}</label>
+          <input 
+            type="email" 
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
+            placeholder={t('register.emailPlaceholder')} 
+          />
+        </div>
+
+        <div className="form-group">
+          <label>{t('register.password')}</label>
+          <input 
+            type="password" 
+            name="password"
+            value={formData.password}
+            onChange={handleInputChange}
+            placeholder={t('register.passwordPlaceholder')} 
+          />
+          <span className="password-toggle">👁</span>
+        </div>
+
+        <button type="submit" className="submit-btn">
+          {t('register.submitButton')}
+        </button>
+      </form>
+
+      <div className="divider">{t('register.or')}</div>
+
+      <p className="login-text">
+        {t('register.hasAccount')} 
+        <Link to="/login" className="login-link">{t('register.login')}</Link>
+      </p>
+
+      <div className="language-switcher">
+        <label>
+          <input 
+            type="radio" 
+            name="lang" 
+            checked={currentLanguage === 'en'}
+            onChange={() => handleLanguageChange('en')}
+          /> 
+          English
+        </label>
+        <label>
+          <input 
+            type="radio" 
+            name="lang" 
+            checked={currentLanguage === 'ar'}
+            onChange={() => handleLanguageChange('ar')}
+          /> 
+          العربية
+        </label>
+      </div>
+    </div>
+  );
+
   return (
-    <div className="register-container">
-      <div className="register-card">
-        {/* Left Side - Form Section */}
-        <div className="form-section">
-          <div className="form-header">
-            <h2>{t('register.title')}</h2>
-            <p>{t('register.subtitle')}</p>
-          </div>
-          
-          <form onSubmit={handleSubmit} className="register-form">
-            {/* Name and Email Row */}
-            <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="name">{t('register.fullName')}</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  required
-                  placeholder={t('register.fullNamePlaceholder')}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="email">{t('register.email')}</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                  placeholder={t('register.emailPlaceholder')}
-                />
-              </div>
-            </div>
-
-            {/* Password and Phone Row */}
-            <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="password">{t('register.password')}</label>
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleInputChange}
-                  required
-                  placeholder={t('register.passwordPlaceholder')}
-                  minLength="6"
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="phone">{t('register.phone')}</label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  required
-                  placeholder={t('register.phonePlaceholder')}
-                />
-              </div>
-            </div>
-
-            {/* Country and Website Row */}
-            <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="country">{t('register.country')}</label>
-                <select
-                  id="country"
-                  name="country"
-                  value={formData.country}
-                  onChange={handleInputChange}
-                  required
-                >
-                  <option value="">{t('register.countryPlaceholder')}</option>
-                  {countries.map(country => (
-                    <option key={country.code} value={country.code}>
-                      {country.flag} {country.name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div className="form-group">
-                <label htmlFor="vendorWebsite">{t('register.vendorWebsite')}</label>
-                <input
-                  type="url"
-                  id="vendorWebsite"
-                  name="vendorWebsite"
-                  value={formData.vendorWebsite}
-                  onChange={handleInputChange}
-                  placeholder={t('register.vendorWebsitePlaceholder')}
-                />
-              </div>
-            </div>
-
-            {/* Submit Button */}
-            <button type="submit" className="submit-btn">
-              {t('register.submitButton')}
-            </button>
-
-            {/* Login Link */}
-            <div className="login-link">
-              <p>{t('register.hasAccount')} <Link to="/login">{t('register.login')}</Link></p>
-            </div>
-
-            {/* Language Switcher */}
-            <div className="language-switcher">
-              <button 
-                type="button" 
-                className={`lang-btn ${getLanguage() === 'ar' ? 'active' : ''}`}
-                onClick={() => handleLanguageChange('ar')}
-              >
-                عربي
-              </button>
-              <button 
-                type="button" 
-                className={`lang-btn ${getLanguage() === 'en' ? 'active' : ''}`}
-                onClick={() => handleLanguageChange('en')}
-              >
-                English
-              </button>
-            </div>
-          </form>
+    <div className="register-wrapper" dir={isArabic ? 'rtl' : 'ltr'}>
+      {/* المحتوى (الـ swiper) - دائماً في الـ left-section */}
+      <div className="left-section">
+        {brandingContent}
+        <div className="currency-background" key={currentSlide}>
+          {swiperData[currentSlide].currency}
         </div>
-
-        {/* Right Side - Logo Section */}
-        <div className="image-section">
-          <div className="logo-container">
-            <img src="/logo.jpeg" alt="OPS Logo" className="logo-image" />
-          </div>
-        </div>
+      </div>
+      
+      {/* الفورم - دائماً في الـ right-section */}
+      <div className="right-section">
+        {formContent}
       </div>
     </div>
   );

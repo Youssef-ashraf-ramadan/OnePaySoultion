@@ -6,10 +6,12 @@ const translations = {
   en: enTranslations
 };
 
-let currentLanguage = 'ar';
+// جلب اللغة من localStorage أو استخدام العربية كافتراضي
+let currentLanguage = localStorage.getItem('selectedLanguage') || 'ar';
 
 export const setLanguage = (lang) => {
   currentLanguage = lang;
+  localStorage.setItem('selectedLanguage', lang);
   document.documentElement.lang = lang;
   document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
 };

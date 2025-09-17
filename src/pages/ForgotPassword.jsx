@@ -6,6 +6,7 @@ import './ForgotPassword.css';
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [currentLanguage, setCurrentLanguage] = useState(getLanguage());
 
   const handleInputChange = (e) => {
     setEmail(e.target.value);
@@ -14,129 +15,113 @@ const ForgotPassword = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Reset Email:', email);
-    // هنا يمكن إضافة منطق إرسال رابط إعادة تعيين كلمة المرور
     setIsSubmitted(true);
   };
 
   const handleLanguageChange = (lang) => {
     setLanguage(lang);
-    // Force re-render by updating state
+    setCurrentLanguage(lang);
     setEmail(email);
   };
 
-  if (isSubmitted) {
-    return (
-      <div className="forgot-password-container">
-        <div className="forgot-password-card">
-          <div className="form-section">
-          <div className="success-message">
-            <div className="success-icon">✓</div>
-            <h2>{t('forgotPassword.successTitle')}</h2>
-            <p>{t('forgotPassword.successMessage')}</p>
-            <p className="email-sent">{t('forgotPassword.emailSent')} {email}</p>
-            <div className="action-buttons">
-              <Link to="/login" className="back-to-login-btn">
-                {t('forgotPassword.backToLoginBtn')}
-              </Link>
-              <button 
-                onClick={() => setIsSubmitted(false)}
-                className="resend-btn"
-              >
-                {t('forgotPassword.resendBtn')}
-              </button>
-            </div>
-            {/* Language Switcher */}
-            <div className="language-switcher">
-              <button 
-                type="button" 
-                className={`lang-btn ${getLanguage() === 'ar' ? 'active' : ''}`}
-                onClick={() => handleLanguageChange('ar')}
-              >
-                عربي
-              </button>
-              <button 
-                type="button" 
-                className={`lang-btn ${getLanguage() === 'en' ? 'active' : ''}`}
-                onClick={() => handleLanguageChange('en')}
-              >
-                English
-              </button>
-            </div>
+  // تحديد ترتيب المحتوى حسب اللغة
+  const isArabic = currentLanguage === 'ar';
+
+  const formContent = (
+    <div className="form-card">
+      <p style={{ fontSize: "1rem", color: "#666" }}>
+        {t('forgotPassword.subtitle')}
+      </p>
+      <h2>{t('forgotPassword.title')}</h2>
+
+      {!isSubmitted ? (
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>{t('forgotPassword.email')}</label>
+            <input 
+              type="email" 
+              name="email"
+              value={email}
+              onChange={handleInputChange}
+              placeholder={t('forgotPassword.emailPlaceholder')} 
+            />
           </div>
+
+          <button type="submit" className="submit-btn">
+            {t('forgotPassword.submitButton')}
+          </button>
+
+          <div className="divider">{t('forgotPassword.or')}</div>
+
+          <p className="login-text">
+            {t('forgotPassword.rememberPassword')} 
+            <Link to="/login" className="login-link">{t('forgotPassword.backToLogin')}</Link>
+          </p>
+        </form>
+      ) : (
+        <div className="success-message">
+          <div className="success-icon">✓</div>
+          <h2>{t('forgotPassword.successTitle')}</h2>
+          <p>{t('forgotPassword.successMessage')}</p>
+          <p className="email-sent">{t('forgotPassword.emailSent')} {email}</p>
+          <div className="action-buttons">
+            <Link to="/login" className="back-to-login-btn">
+              {t('forgotPassword.backToLoginBtn')}
+            </Link>
+            <button 
+              onClick={() => setIsSubmitted(false)}
+              className="resend-btn"
+            >
+              {t('forgotPassword.resendBtn')}
+            </button>
           </div>
-          <div className="image-section">
-            <div className="logo-container">
-              <img src="/logo.jpeg" alt="OPS Logo" className="logo-image" />
-            </div>
+        </div>
+      )}
+
+      <div className="language-switcher">
+        <label>
+          <input 
+            type="radio" 
+            name="lang" 
+            checked={currentLanguage === 'en'}
+            onChange={() => handleLanguageChange('en')}
+          /> 
+          English
+        </label>
+        <label>
+          <input 
+            type="radio" 
+            name="lang" 
+            checked={currentLanguage === 'ar'}
+            onChange={() => handleLanguageChange('ar')}
+          /> 
+          العربية
+        </label>
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="forgot-password-wrapper" dir={isArabic ? 'rtl' : 'ltr'}>
+      {/* المحتوى (الـ branding) - دائماً في الـ left-section */}
+      <div className="left-section">
+        <div className="branding-content">
+          <div className="logo">
+            <h1 className="logo-text">OPS</h1>
+            <p className="logo-subtitle">Online Pay Solution</p>
+          </div>
+          <div className="main-headline">
+            <h2>{t('forgotPassword.welcomeTitle')}</h2>
+          </div>
+          <div className="description">
+            <p>{t('forgotPassword.welcomeDescription')}</p>
           </div>
         </div>
       </div>
-    );
-  }
-
-  return (
-    <div className="forgot-password-container">
-      <div className="forgot-password-card">
-        {/* Left Side - Form Section */}
-        <div className="form-section">
-          <div className="form-header">
-            <h2>{t('forgotPassword.title')}</h2>
-            <p>{t('forgotPassword.subtitle')}</p>
-          </div>
-          
-          <form onSubmit={handleSubmit} className="forgot-password-form">
-            {/* Email Field */}
-            <div className="form-group">
-              <label htmlFor="email">{t('forgotPassword.email')}</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={email}
-                onChange={handleInputChange}
-                required
-                placeholder={t('forgotPassword.emailPlaceholder')}
-              />
-            </div>
-
-            {/* Submit Button */}
-            <button type="submit" className="submit-btn">
-              {t('forgotPassword.submitButton')}
-            </button>
-
-            {/* Back to Login Link */}
-            <div className="back-link">
-              <Link to="/login" className="back-to-login">
-                {t('forgotPassword.backToLogin')}
-              </Link>
-            </div>
-
-            {/* Language Switcher */}
-            <div className="language-switcher">
-              <button 
-                type="button" 
-                className={`lang-btn ${getLanguage() === 'ar' ? 'active' : ''}`}
-                onClick={() => handleLanguageChange('ar')}
-              >
-                عربي
-              </button>
-              <button 
-                type="button" 
-                className={`lang-btn ${getLanguage() === 'en' ? 'active' : ''}`}
-                onClick={() => handleLanguageChange('en')}
-              >
-                English
-              </button>
-            </div>
-          </form>
-        </div>
-
-        {/* Right Side - Logo Section */}
-        <div className="image-section">
-          <div className="logo-container">
-            <img src="/logo.jpeg" alt="OPS Logo" className="logo-image" />
-          </div>
-        </div>
+      
+      {/* الفورم - دائماً في الـ right-section */}
+      <div className="right-section">
+        {formContent}
       </div>
     </div>
   );
