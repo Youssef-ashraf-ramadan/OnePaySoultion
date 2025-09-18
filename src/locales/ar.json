@@ -2,8 +2,9 @@
   "login": {
     "title": "تسجيل الدخول",
     "subtitle": "مرحباً بك مرة أخرى",
-    "email": "البريد الإلكتروني",
-    "emailPlaceholder": "example@email.com",
+    "phone": "رقم الهاتف",
+    "phonePlaceholder": "+201025376604",
+    "phoneNumberPlaceholder": "1025376604",
     "password": "كلمة المرور",
     "passwordPlaceholder": "أدخل كلمة المرور",
     "submitButton": "تسجيل الدخول",
@@ -12,21 +13,7 @@
     "createAccount": "إنشاء حساب جديد",
     "or": "أو",
     "welcomeTitle": "مرحباً بك مرة أخرى",
-    "welcomeDescription": "سجل دخولك للوصول إلى حسابك والاستمتاع بخدماتنا المميزة.",
-    "swiper": {
-      "slide1": {
-        "title": "ادفع بأمان عبر الإنترنت",
-        "description": "خدمة دفع آمنة وسهلة لإتمام معاملاتك عبر الموقع."
-      },
-      "slide2": {
-        "title": "سريع وموثوق",
-        "description": "استمتع بمعاملات سريعة البرق مع تقنية الدفع المتطورة لدينا."
-      },
-      "slide3": {
-        "title": "تغطية عالمية",
-        "description": "اقبل المدفوعات من العملاء في جميع أنحاء العالم مع حلول الدفع الدولية لدينا."
-      }
-    }
+    "welcomeDescription": "سجل دخولك للوصول إلى حسابك والاستمتاع بخدماتنا المميزة."
   },
   "register": {
     "title": "سجل معلوماتك معنا",
@@ -40,46 +27,64 @@
     "password": "كلمة المرور",
     "passwordPlaceholder": "كلمة المرور",
     "phone": "رقم الهاتف",
-    "phonePlaceholder": "+966 50 123 4567",
+    "phoneNumberPlaceholder": "1025376604",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "confirmPasswordPlaceholder": "أعد إدخال كلمة المرور",
+    "birthDate": "تاريخ الميلاد",
     "country": "الدولة",
-    "countryPlaceholder": "اختر الدولة",
+    "image": "الصورة الشخصية",
     "vendorWebsite": "موقع البائع",
     "vendorWebsitePlaceholder": "https://example.com",
     "submitButton": "ابدأ الآن",
     "or": "أو",
     "hasAccount": "لديك حساب بالفعل؟",
-    "login": "تسجيل الدخول",
-    "swiper": {
-      "slide1": {
-        "title": "ادفع بأمان عبر الإنترنت",
-        "description": "خدمة دفع آمنة وسهلة لإتمام معاملاتك عبر الموقع."
-      },
-      "slide2": {
-        "title": "سريع وموثوق",
-        "description": "استمتع بمعاملات سريعة البرق مع تقنية الدفع المتطورة لدينا."
-      },
-      "slide3": {
-        "title": "تغطية عالمية",
-        "description": "اقبل المدفوعات من العملاء في جميع أنحاء العالم مع حلول الدفع الدولية لدينا."
-      }
-    }
+    "login": "تسجيل الدخول"
   },
   "forgotPassword": {
     "title": "نسيت كلمة المرور؟",
-    "subtitle": "أدخل بريدك الإلكتروني وسنرسل لك رابط لإعادة تعيين كلمة المرور",
-    "email": "البريد الإلكتروني",
-    "emailPlaceholder": "example@email.com",
-    "submitButton": "إرسال رابط إعادة التعيين",
+    "subtitle": "أدخل رقم هاتفك وسنرسل لك رمز لإعادة تعيين كلمة المرور",
+    "phone": "رقم الهاتف",
+    "phonePlaceholder": "+201025376604",
+    "phoneNumberPlaceholder": "1025376604",
+    "submitButton": "إرسال رمز إعادة التعيين",
     "backToLogin": "العودة لتسجيل الدخول",
-    "successTitle": "تم إرسال الرابط",
-    "successMessage": "تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني",
-    "emailSent": "تم الإرسال إلى:",
+    "successTitle": "تم إرسال الرمز",
+    "successMessage": "تم إرسال رمز إعادة تعيين كلمة المرور إلى هاتفك",
+    "phoneSent": "تم الإرسال إلى:",
     "backToLoginBtn": "العودة لتسجيل الدخول",
     "resendBtn": "إرسال مرة أخرى",
     "or": "أو",
     "rememberPassword": "تذكرت كلمة المرور؟",
     "welcomeTitle": "نسيت كلمة المرور؟",
     "welcomeDescription": "لا تقلق، يمكننا مساعدتك في استعادة حسابك بسهولة وأمان."
+  },
+  "otp": {
+    "title": "أدخل رمز التحقق",
+    "subtitle": "تم إرسال رمز التحقق إلى",
+    "verify": "تحقق",
+    "resend": "إعادة إرسال الرمز",
+    "resendIn": "يمكنك إعادة الإرسال خلال"
+  },
+  "resetPassword": {
+    "title": "إعادة تعيين كلمة المرور",
+    "subtitle": "أدخل كلمة المرور الجديدة",
+    "newPassword": "كلمة المرور الجديدة",
+    "newPasswordPlaceholder": "أدخل كلمة المرور الجديدة",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "confirmPasswordPlaceholder": "أعد إدخال كلمة المرور",
+    "submitButton": "تغيير كلمة المرور"
+  },
+  "dashboard": {
+    "welcome": "مرحباً بك",
+    "subtitle": "تم تسجيل الدخول بنجاح إلى حسابك",
+    "successTitle": "تم إنشاء حسابك بنجاح!",
+    "successMessage": "مرحباً بك في منصتنا. يمكنك الآن الاستمتاع بجميع خدماتنا.",
+    "userInfo": "معلومات المستخدم",
+    "phone": "رقم الهاتف",
+    "email": "البريد الإلكتروني",
+    "name": "الاسم",
+    "getStarted": "ابدأ الآن",
+    "viewProfile": "عرض الملف الشخصي"
   },
   "countries": {
     "SA": "السعودية",

@@ -2,8 +2,9 @@
   "login": {
     "title": "Login",
     "subtitle": "Welcome back",
-    "email": "Email",
-    "emailPlaceholder": "example@email.com",
+    "phone": "Phone Number",
+    "phonePlaceholder": "+201025376604",
+    "phoneNumberPlaceholder": "1025376604",
     "password": "Password",
     "passwordPlaceholder": "Enter your password",
     "submitButton": "Login",
@@ -12,21 +13,7 @@
     "createAccount": "Create new account",
     "or": "Or",
     "welcomeTitle": "Welcome Back",
-    "welcomeDescription": "Sign in to your account and enjoy our premium services.",
-    "swiper": {
-      "slide1": {
-        "title": "Pay Online Securely",
-        "description": "Secure and easy online payment service to complete your transactions through the website."
-      },
-      "slide2": {
-        "title": "Fast & Reliable",
-        "description": "Experience lightning-fast transactions with our cutting-edge payment technology."
-      },
-      "slide3": {
-        "title": "Global Coverage",
-        "description": "Accept payments from customers worldwide with our international payment solutions."
-      }
-    }
+    "welcomeDescription": "Sign in to your account and enjoy our premium services."
   },
   "register": {
     "title": "Register with us",
@@ -40,46 +27,64 @@
     "password": "Password",
     "passwordPlaceholder": "****************",
     "phone": "Phone Number",
-    "phonePlaceholder": "+966 50 123 4567",
+    "phoneNumberPlaceholder": "1025376604",
+    "confirmPassword": "Confirm Password",
+    "confirmPasswordPlaceholder": "Re-enter password",
+    "birthDate": "Birth Date",
     "country": "Country",
-    "countryPlaceholder": "Select Country",
+    "image": "Profile Image",
     "vendorWebsite": "Vendor Website",
     "vendorWebsitePlaceholder": "https://example.com",
     "submitButton": "GET STARTED",
     "or": "Or",
     "hasAccount": "Already have an account?",
-    "login": "LOGIN HERE",
-    "swiper": {
-      "slide1": {
-        "title": "Pay Online Securely",
-        "description": "Secure and easy online payment service to complete your transactions through the website."
-      },
-      "slide2": {
-        "title": "Fast & Reliable",
-        "description": "Experience lightning-fast transactions with our cutting-edge payment technology."
-      },
-      "slide3": {
-        "title": "Global Coverage",
-        "description": "Accept payments from customers worldwide with our international payment solutions."
-      }
-    }
+    "login": "LOGIN HERE"
   },
   "forgotPassword": {
     "title": "Forgot Password?",
-    "subtitle": "Enter your email and we'll send you a link to reset your password",
-    "email": "Email",
-    "emailPlaceholder": "example@email.com",
-    "submitButton": "Send Reset Link",
+    "subtitle": "Enter your phone number and we'll send you a code to reset your password",
+    "phone": "Phone Number",
+    "phonePlaceholder": "+201025376604",
+    "phoneNumberPlaceholder": "1025376604",
+    "submitButton": "Send Reset Code",
     "backToLogin": "Back to Login",
-    "successTitle": "Link Sent",
-    "successMessage": "Password reset link has been sent to your email",
-    "emailSent": "Sent to:",
+    "successTitle": "Code Sent",
+    "successMessage": "Password reset code has been sent to your phone",
+    "phoneSent": "Sent to:",
     "backToLoginBtn": "Back to Login",
     "resendBtn": "Send Again",
     "or": "Or",
     "rememberPassword": "Remember your password?",
     "welcomeTitle": "Forgot Password?",
     "welcomeDescription": "Don't worry, we can help you recover your account easily and securely."
+  },
+  "otp": {
+    "title": "Enter Verification Code",
+    "subtitle": "Verification code sent to",
+    "verify": "Verify",
+    "resend": "Resend Code",
+    "resendIn": "You can resend in"
+  },
+  "resetPassword": {
+    "title": "Reset Password",
+    "subtitle": "Enter your new password",
+    "newPassword": "New Password",
+    "newPasswordPlaceholder": "Enter new password",
+    "confirmPassword": "Confirm Password",
+    "confirmPasswordPlaceholder": "Re-enter password",
+    "submitButton": "Change Password"
+  },
+  "dashboard": {
+    "welcome": "Welcome",
+    "subtitle": "Successfully logged into your account",
+    "successTitle": "Account created successfully!",
+    "successMessage": "Welcome to our platform. You can now enjoy all our services.",
+    "userInfo": "User Information",
+    "phone": "Phone Number",
+    "email": "Email",
+    "name": "Name",
+    "getStarted": "Get Started",
+    "viewProfile": "View Profile"
   },
   "countries": {
     "SA": "Saudi Arabia",
