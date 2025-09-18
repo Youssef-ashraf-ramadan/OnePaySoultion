@@ -66,9 +66,8 @@ const OTP = () => {
       if (isForgotPassword) {
         navigate('/reset-password', { state: { phone } });
       } else {
-        // إظهار رسالة نجاح التحقق
-        toast.success(getLanguage() === 'ar' ? 'تم التحقق بنجاح! مرحباً بك.' : 'Verification successful! Welcome.');
-        navigate('/dashboard'); // أو أي صفحة تريدها بعد تسجيل الدخول
+        // Navigate to dashboard without showing toast here
+        navigate('/dashboard');
       }
       // مسح الـ success بعد الاستخدام
       dispatch(clearSuccess());

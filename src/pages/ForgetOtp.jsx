@@ -60,6 +60,7 @@ const ForgetOtp = () => {
 
   useEffect(() => {
     if (success) {
+      toast.success(getLanguage() === 'ar' ? 'تم التحقق بنجاح!' : 'Verification successful!');
       // Navigate to reset password page
       navigate('/reset-password', { state: { phone } });
       // مسح الـ success بعد الاستخدام

@@ -71,6 +71,7 @@ const Login = () => {
         dispatch(clearNeedsVerification());
       } else {
         // تسجيل دخول عادي
+        toast.success(getLanguage() === 'ar' ? 'تم التحقق بنجاح! مرحباً بك.' : 'Verification successful! Welcome.');
         navigate('/otp');
       }
     }

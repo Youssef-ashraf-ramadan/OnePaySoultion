@@ -152,7 +152,7 @@ export const resetPassword = createAsyncThunk(
   async (passwordData, { rejectWithValue }) => {
     try {
       const currentLanguage = getLanguage();
-      const response = await axios.post(`${BASE_URL}/reset-password`, passwordData, {
+      const response = await axios.post(`${BASE_URL}/forgot/reset-password`, passwordData, {
         headers: {
           'Accept-Language': currentLanguage,
           'Content-Type': 'application/json'
